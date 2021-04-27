@@ -1,0 +1,10 @@
+
+- if @logged_in
+  %p
+    Welcome
+    = @cn
+  %p
+    = button_to("Logout", slo_notify_path)
+- else
+  %p
+    = button_to("Login", sso_auth_path, method: :get)

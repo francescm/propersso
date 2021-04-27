@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Proper SSO
+    = csrf_meta_tags
+    = csp_meta_tag
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'fa', 'data-turbolinks-track': 'reload'
+  %body.has-background-light
+    %section.section.is-mobile
+      .container.has-background-white{style: "padding: 1em;"}
+        %h1.title My application
+        = yield
+        %hr
+        %footer
+          %p
+            Just a standard footer

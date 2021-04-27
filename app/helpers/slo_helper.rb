@@ -1,0 +1,2 @@
+module SloHelper
+end
