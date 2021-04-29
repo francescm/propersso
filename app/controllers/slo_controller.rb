@@ -20,7 +20,8 @@ class SloController < ApplicationController
         end
       end
     }
-    render xml: soap
+    logger.info soap.to_xml
+    render xml: soap, content_type: "text/xml"
 
   end
 end
