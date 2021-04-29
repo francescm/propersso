@@ -12,7 +12,7 @@ class SloController < ApplicationController
   def back
     logger.info("params: #{params}")
     soap = Nokogiri::XML::Builder.new { |xml|
-      xml.Envelope('xmlns:soap-env' => 'http://schemas.xmlsoap.org/soap/envelope/', 'xmlns:notify' => 'urn:mace:shibboleth:2.0:sp:notify') do
+      xml['soap-env'].Envelope('xmlns:soap-env' => 'http://schemas.xmlsoap.org/soap/envelope/', 'xmlns:notify' => 'urn:mace:shibboleth:2.0:sp:notify') do
         xml['soap-env'].Body do
           xml['soap-env'].LogoutNotificationResponse do
             xml['notify'].OK
