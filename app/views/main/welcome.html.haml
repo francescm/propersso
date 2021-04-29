@@ -4,7 +4,7 @@
     Welcome
     = @cn
   %p
-    = button_to("Logout", slo_notify_path)
+    = button_to("Logout", "/Shibboleth.sso/Logout")
 - else
   %p
     = button_to("Login", sso_auth_path, method: :get)
