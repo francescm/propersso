@@ -6,6 +6,7 @@ class SsoController < ApplicationController
 
     logger.info("Shib-Session-ID as ENV is: #{request.env['Shib-Session-ID']}")
     logger.info("Shib-Session-ID as session is #{session[:shib_session]}")
+    logger.info("session id: #{session.id}")
 
     redirect_to :controller => 'main', :action => 'welcome'
   end
