@@ -11,6 +11,11 @@ class SloController < ApplicationController
 
   def back
     logger.info("params: #{params}")
+    logger.info("raw post: #{request.raw_post}")
+    payload = request.raw_post
+    session_id = Nokogiri::XML(payload).xpath('//notify:SessionID', 'notify' => 'urn:mace:shibboleth:2.0:sp:notify').text.strip
+    logger.info session_id
+
     soap = Nokogiri::XML::Builder.new { |xml|
       xml['soap-env'].Envelope('xmlns:soap-env' => 'http://schemas.xmlsoap.org/soap/envelope/', 'xmlns:notify' => 'urn:mace:shibboleth:2.0:sp:notify') do
         xml['soap-env'].Body do
@@ -20,7 +25,7 @@ class SloController < ApplicationController
         end
       end
     }
-    logger.info soap.to_xml
+    logger.debug soap.to_xml
     render xml: soap, content_type: "text/xml"
 
   end
