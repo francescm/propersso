@@ -16,6 +16,10 @@ class SloController < ApplicationController
     session_id = Nokogiri::XML(payload).xpath('//notify:SessionID', 'notify' => 'urn:mace:shibboleth:2.0:sp:notify').text.strip
     logger.info session_id
 
+    db_session = Sesion.where(shib_session: session_id)
+    logger.info db_session
+    db_session.destroy
+
     soap = Nokogiri::XML::Builder.new { |xml|
       xml['soap-env'].Envelope('xmlns:soap-env' => 'http://schemas.xmlsoap.org/soap/envelope/', 'xmlns:notify' => 'urn:mace:shibboleth:2.0:sp:notify') do
         xml['soap-env'].Body do

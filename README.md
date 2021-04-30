@@ -31,6 +31,20 @@ Create the SSO controller:
     
 and the SLO controller:    
     
-    rails g controller slo notify -e haml
+    rails g controller slo front back -e haml
+    
+The project seeds the activerecord-session_store store gem; please setup it as directed in the 
+[github page](https://github.com/rails/activerecord-session_store).
+
+Modify sessions table to hold shib_session too:
+
+    rails g migration AddShibsessionToSession shib_session:string
+    rake db:migrate
+    
+When you create the session in the auth controller, take care to populate 
+```shib_session``` column.
+    
+    
+    https://wiki.shibboleth.net/confluence/display/SHIB2/SLOWebappAdaptation
         
     
