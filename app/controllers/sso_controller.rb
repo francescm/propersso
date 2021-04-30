@@ -9,11 +9,12 @@ class SsoController < ApplicationController
 
     # session.id is cleartext
     # session.session_id is crypted
-    logger.info("session id: #{session.session_id}")
+    logger.info("session id: #{session.id}")
+    logger.info("serialize: #{::Base64.encode64(Marshal.dump(session.id))}")
 
-    db_session = Session.find_by_session_id(session.session_id)
-    db_session.shib_session = shib_session
-    db_session.save
+    #db_session = Session.find_by_session_id(session.session_id)
+    #db_session.shib_session = shib_session
+    #db_session.save
 
     redirect_to :controller => 'main', :action => 'welcome'
   end
