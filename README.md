@@ -40,6 +40,10 @@ Modify sessions table to hold shib_session too:
 
     rails g migration AddShibsessionToSession shib_session:string
     rake db:migrate
+
+In order to manipulate Session table you need a stud model:
+
+    rails g model session --no-migration
     
 When you create the session in the auth controller, take care to populate 
 ```shib_session``` column.
