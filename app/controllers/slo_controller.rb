@@ -3,7 +3,7 @@ class SloController < ApplicationController
 
   def front
     logger.info("params: #{params}")
-    logger.info("shib session: #{session[:shib_session]}")
+    #logger.info("shib session: #{session[:shib_session]}")
     logger.info("session id: #{session.id}")
     session.destroy
     redirect_to(params["return"])
@@ -16,7 +16,7 @@ class SloController < ApplicationController
     session_id = Nokogiri::XML(payload).xpath('//notify:SessionID', 'notify' => 'urn:mace:shibboleth:2.0:sp:notify').text.strip
     logger.info session_id
 
-    db_session = Sesion.where(shib_session: session_id)
+    db_session = Session.where(shib_session: session_id)
     logger.info db_session
     db_session.destroy
 
