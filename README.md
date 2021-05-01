@@ -1,6 +1,6 @@
 # README
 
-This is proof of concept of a Ruby on Rails application with Shibboleth authentication, 
+This is a proof of concept of a Ruby on Rails application with Shibboleth authentication, 
 pure rails session and a working single sign off.
 
 This application follows: 
@@ -28,12 +28,12 @@ Said that, you you want to nevertheless try it, the software version used is:
 * Rails 6.1.3.1
 * ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x86_64-linux]
 
-## How it works
+## What should it do
 
-You need two tabs: open this application a do a login. On the second tab 
+You need two tabs: open this application and complete a login. On the second tab, 
 open another application on the same Shibboleth Identity Provider (you are not 
 going to need to provide credentials thanks to SSO), then logout. Go back 
-to first tab, refresh, you have been logged out. 
+to first tab, refresh: you have been logged out. 
 
 ## Step by step setup
 
