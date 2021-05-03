@@ -21,18 +21,18 @@ The matter is this setup is completely against a few Rails' conventions:
   * you can't use the trusted cookie session store but you have to switch to the 
   harder database-backed session store, which by the way you need to 
   customize a bit to hold the ```Shib-Session-ID``` data;
-  * you need to fight againts encrypted sessions, the default.
+  * you need to fight against encrypted sessions, the default.
 
 Said that, you you want to nevertheless try it, the software version used is:
 * Debian GNU/Linux 10 (buster)
 * Rails 6.1.3.1
 * ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x86_64-linux]
 
-## What should it do
+## How to test what this application is able to do
 
 You need two tabs: open this application and complete a login. On the second tab, 
 open another application on the same Shibboleth Identity Provider (you are not 
-going to need to provide credentials thanks to SSO), then logout. Go back 
+going to provide credentials thanks to SSO), then logout. Go back 
 to first tab, refresh: you have been logged out. 
 
 ## Step by step setup
@@ -83,7 +83,10 @@ And create the SLO controller, responsible for the Logout:
     
     rails g controller slo front back -e haml
 
-``front`` action deserve no attention.
+``front`` action deserves no attention.
 
 ```back``` action decodes the SOAP payload, extracts the Shib-Session-id, 
 uses it to fetch the relevant row from the session table and deletes it.
+
+Apache2 and shibboleth example files are provided in ```extra``` directory. They assume 
+the application is deployed on a host named ```glimmer.example.org```.
