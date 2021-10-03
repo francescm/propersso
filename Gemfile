@@ -53,3 +53,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml'
 gem 'haml-rails'
 gem 'activerecord-session_store'
+gem 'rexml'
